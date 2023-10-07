@@ -18,6 +18,7 @@ response = requests.get(url)
 # Check if the request was successful (status code 200)
 if response.status_code == 200:
     # Parse the CSV response data
+    print("Complete")
     csv_data = response.text
 
     # Specify the full file path
