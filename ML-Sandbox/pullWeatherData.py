@@ -5,10 +5,6 @@ Weather Data Pulling Script
 Created on Sat Oct  7 16:38:49 2023
 
 """
-# For data analysis:
-import pandas as pd
-import numpy as np
-
 # Pull data
 import json
 import requests
