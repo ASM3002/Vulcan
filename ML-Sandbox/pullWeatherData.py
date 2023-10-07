@@ -32,7 +32,7 @@ def storeListOfDictsCSV(list_of_dicts, name):
 # Pulls dict of dicts:
 def getListOfDictsCSV(name):
     df = pd.read_csv(f"./{name}.csv")
-    list_of_dictionaries = df.to_dict('')
+    list_of_dictionaries = df.to_dict('records')
     return list_of_dictionaries
 
 ###############################################################################
@@ -98,6 +98,10 @@ def pullWeatherFrame(lat, long, date_tuple):
     # Instantiate Date object:
     date = datetime.date(date_tuple[0], date_tuple[1], date_tuple[2])    #(Y, M, D)
     
+    # 0 Days Ago:
+    weather_0 = pullWeatherData(lat, long, date.strftime("%Y-%m-%d"))
+    data_0 = weather_0["data"]        
+    
     # 7 Days Ago:
     date -= datetime.timedelta(days=7)
     weather_7 = pullWeatherData(lat, long, date.strftime("%Y-%m-%d"))
@@ -116,9 +120,14 @@ def pullWeatherFrame(lat, long, date_tuple):
     out = {"latitude": lat, "longitude": long,                                      \
            "disc_clean_date": out_date,                                             \
            "Temp_pre_15": data_15["avgtemp_c"], "Temp_pre_7":   data_7["avgtemp_c"],\
-           "Wind_pre_15": data_15["maxwind_kph"], "Wind_pre_7": data_7["maxwind_kph"],\
+           "Wind_pre_15": data_15["maxwind_mph"], "Wind_pre_7": data_7["maxwind_mph"],\
            "Hum_pre_15":  data_15["avghumidity"], "Hum_pre_7":  data_7["avghumidity"],\
-           "Prec_pre_15": data_15["totalprecip_mm"], "Prec_pre_7": data_7["totalprecip_mm"],\
+           "Prec_pre_15": data_15["totalprecip_in"], "Prec_pre_7": data_7["totalprecip_in"],\
+           
+           "Temp": data_0["avgtemp_c"],     \
+           "Wind": data_0["maxwind_mph"],   \
+           "Hum":  data_0["avghumidity"],   \
+           "Prec": data_0["totalprecip_in"] \
         }
     
     return out
