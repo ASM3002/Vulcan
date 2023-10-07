@@ -31,7 +31,7 @@
 
 
 
-import Foundation
+/**import Foundation
 
 class FosbergFWIManager: ObservableObject {
     func FFWI(temp: Double, humidity: Double, wind: Double) -> Double {
@@ -53,3 +53,4 @@ class FosbergFWIManager: ObservableObject {
         return ffwi
     }
 }
+**/

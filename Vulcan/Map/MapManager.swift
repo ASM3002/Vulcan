@@ -12,7 +12,7 @@
 //  Created by Aiden McDougal on 5/16/23.
 //
 
-import MapKit
+/*import MapKit
 import SwiftUI
 //import LocationFormatter
 
@@ -110,4 +110,4 @@ class MapManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         return array
     }
-}
+}*/

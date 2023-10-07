@@ -5,7 +5,7 @@
 //  Created by Aiden McDougal on 9/20/23.
 //
 
-import SwiftUI
+/*import SwiftUI
 import MapKit
 
 struct MapView: NSViewRepresentable {
@@ -64,4 +64,4 @@ struct MapView: NSViewRepresentable {
             return MKOverlayRenderer()
         }
     }
-}
+}*/

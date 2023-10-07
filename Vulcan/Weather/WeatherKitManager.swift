@@ -5,7 +5,7 @@
 //  Created by Aiden McDougal on 9/19/23.
 //
 
-import Foundation
+/**import Foundation
 import WeatherKit
 
 @MainActor class WeatherKitManager: ObservableObject {
@@ -21,4 +21,4 @@ import WeatherKit
         }
     }
     
-}
+}**/
