@@ -7,19 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B32A9F42ABBA17100CE0603 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F32ABBA17100CE0603 /* PanelView.swift */; };
+		7B32A9F72ABBAFED00CE0603 /* GeneralPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */; };
+		7B32A9F92ABBAFF400CE0603 /* FleetPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */; };
+		7B32A9FB2ABBB00400CE0603 /* FirePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9FA2ABBB00400CE0603 /* FirePanel.swift */; };
+		7B32A9FD2ABBB16700CE0603 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9FC2ABBB16700CE0603 /* MainViewModel.swift */; };
 		7B4035042ABA72860094791A /* VulcanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4035032ABA72860094791A /* VulcanApp.swift */; };
-		7B4035062ABA72860094791A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4035052ABA72860094791A /* ContentView.swift */; };
+		7B4035062ABA72860094791A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4035052ABA72860094791A /* MainView.swift */; };
 		7B4035082ABA72870094791A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B4035072ABA72870094791A /* Assets.xcassets */; };
 		7B40350B2ABA72870094791A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B40350A2ABA72870094791A /* Preview Assets.xcassets */; };
+		7B4035142ABA74600094791A /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4035132ABA74600094791A /* NavigationBarView.swift */; };
+		7B4035182ABA75B10094791A /* QuickWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4035172ABA75B10094791A /* QuickWeatherInfo.swift */; };
+		7B40351A2ABA79380094791A /* WeatherKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4035192ABA79380094791A /* WeatherKitManager.swift */; };
+		7B6E99062AD0F4A300ACACB0 /* FireWeatherIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E99052AD0F4A300ACACB0 /* FireWeatherIndexManager.swift */; };
+		7BEDE0262ABB17360031483B /* QuickFireInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEDE0252ABB17360031483B /* QuickFireInfo.swift */; };
+		7BEDE0292ABB184F0031483B /* NavigationBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEDE0282ABB184F0031483B /* NavigationBarItem.swift */; };
+		7BEDE02C2ABB19140031483B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEDE02B2ABB19140031483B /* Color.swift */; };
+		7BEDE02F2ABB1C8F0031483B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEDE02E2ABB1C8F0031483B /* MapView.swift */; };
+		7BEDE0312ABB1D6B0031483B /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEDE0302ABB1D6B0031483B /* MapManager.swift */; };
+		7BF8FC842ACF818E00E8B4F3 /* Fire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8FC832ACF818E00E8B4F3 /* Fire.swift */; };
+		7BF8FC862ACF835B00E8B4F3 /* FireTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8FC852ACF835B00E8B4F3 /* FireTestData.swift */; };
+		7BF8FC882ACF866100E8B4F3 /* Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8FC872ACF866100E8B4F3 /* Management.swift */; };
+		7BF8FC8A2ACF954E00E8B4F3 /* FleetTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8FC892ACF954E00E8B4F3 /* FleetTestData.swift */; };
+		7BF8FC8C2ACF966600E8B4F3 /* Drone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8FC8B2ACF966600E8B4F3 /* Drone.swift */; };
+		7BF8FC8E2ACF967900E8B4F3 /* Truck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8FC8D2ACF967900E8B4F3 /* Truck.swift */; };
+		7BF8FC902AD032B600E8B4F3 /* ManagementTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8FC8F2AD032B600E8B4F3 /* ManagementTestData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B32A9F32ABBA17100CE0603 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPanel.swift; sourceTree = "<group>"; };
+		7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetPanel.swift; sourceTree = "<group>"; };
+		7B32A9FA2ABBB00400CE0603 /* FirePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePanel.swift; sourceTree = "<group>"; };
+		7B32A9FC2ABBB16700CE0603 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7B4035002ABA72860094791A /* Vulcan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vulcan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B4035032ABA72860094791A /* VulcanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VulcanApp.swift; sourceTree = "<group>"; };
-		7B4035052ABA72860094791A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7B4035052ABA72860094791A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7B4035072ABA72870094791A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B40350A2ABA72870094791A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7B40350C2ABA72870094791A /* Vulcan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vulcan.entitlements; sourceTree = "<group>"; };
+		7B4035132ABA74600094791A /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		7B4035172ABA75B10094791A /* QuickWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickWeatherInfo.swift; sourceTree = "<group>"; };
+		7B4035192ABA79380094791A /* WeatherKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherKitManager.swift; sourceTree = "<group>"; };
+		7B6E99052AD0F4A300ACACB0 /* FireWeatherIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWeatherIndexManager.swift; sourceTree = "<group>"; };
+		7BEDE0252ABB17360031483B /* QuickFireInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFireInfo.swift; sourceTree = "<group>"; };
+		7BEDE0282ABB184F0031483B /* NavigationBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarItem.swift; sourceTree = "<group>"; };
+		7BEDE02B2ABB19140031483B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		7BEDE02E2ABB1C8F0031483B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		7BEDE0302ABB1D6B0031483B /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		7BF8FC832ACF818E00E8B4F3 /* Fire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fire.swift; sourceTree = "<group>"; };
+		7BF8FC852ACF835B00E8B4F3 /* FireTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTestData.swift; sourceTree = "<group>"; };
+		7BF8FC872ACF866100E8B4F3 /* Management.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Management.swift; sourceTree = "<group>"; };
+		7BF8FC892ACF954E00E8B4F3 /* FleetTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetTestData.swift; sourceTree = "<group>"; };
+		7BF8FC8B2ACF966600E8B4F3 /* Drone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drone.swift; sourceTree = "<group>"; };
+		7BF8FC8D2ACF967900E8B4F3 /* Truck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Truck.swift; sourceTree = "<group>"; };
+		7BF8FC8F2AD032B600E8B4F3 /* ManagementTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementTestData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +75,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B32A9F52ABBA35600CE0603 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				7B32A9F32ABBA17100CE0603 /* PanelView.swift */,
+				7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */,
+				7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */,
+				7B32A9FA2ABBB00400CE0603 /* FirePanel.swift */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		7B32A9FE2ABBCF9F00CE0603 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				7BF8FC832ACF818E00E8B4F3 /* Fire.swift */,
+				7BF8FC872ACF866100E8B4F3 /* Management.swift */,
+				7BF8FC8B2ACF966600E8B4F3 /* Drone.swift */,
+				7BF8FC8D2ACF967900E8B4F3 /* Truck.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
 		7B4034F72ABA72860094791A = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +116,14 @@
 		7B4035022ABA72860094791A /* Vulcan */ = {
 			isa = PBXGroup;
 			children = (
-				7B4035032ABA72860094791A /* VulcanApp.swift */,
-				7B4035052ABA72860094791A /* ContentView.swift */,
+				7BEDE02A2ABB190B0031483B /* Extensions */,
+				7B4035152ABA74670094791A /* Main */,
+				7B4035122ABA743C0094791A /* Navigation Bar */,
+				7B32A9F52ABBA35600CE0603 /* Panel */,
+				7BEDE02D2ABB1C810031483B /* Map */,
+				7B4035162ABA75810094791A /* Weather */,
+				7B32A9FE2ABBCF9F00CE0603 /* Structures */,
+				7BF8FC822ACF817400E8B4F3 /* Test Data */,
 				7B4035072ABA72870094791A /* Assets.xcassets */,
 				7B40350C2ABA72870094791A /* Vulcan.entitlements */,
 				7B4035092ABA72870094791A /* Preview Content */,
@@ -67,6 +137,71 @@
 				7B40350A2ABA72870094791A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7B4035122ABA743C0094791A /* Navigation Bar */ = {
+			isa = PBXGroup;
+			children = (
+				7BEDE0272ABB18400031483B /* Components */,
+				7B4035132ABA74600094791A /* NavigationBarView.swift */,
+				7B4035172ABA75B10094791A /* QuickWeatherInfo.swift */,
+				7BEDE0252ABB17360031483B /* QuickFireInfo.swift */,
+			);
+			path = "Navigation Bar";
+			sourceTree = "<group>";
+		};
+		7B4035152ABA74670094791A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7B4035032ABA72860094791A /* VulcanApp.swift */,
+				7B4035052ABA72860094791A /* MainView.swift */,
+				7B32A9FC2ABBB16700CE0603 /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7B4035162ABA75810094791A /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				7B4035192ABA79380094791A /* WeatherKitManager.swift */,
+				7B6E99052AD0F4A300ACACB0 /* FireWeatherIndexManager.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		7BEDE0272ABB18400031483B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7BEDE0282ABB184F0031483B /* NavigationBarItem.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7BEDE02A2ABB190B0031483B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7BEDE02B2ABB19140031483B /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7BEDE02D2ABB1C810031483B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				7BEDE02E2ABB1C8F0031483B /* MapView.swift */,
+				7BEDE0302ABB1D6B0031483B /* MapManager.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		7BF8FC822ACF817400E8B4F3 /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				7BF8FC852ACF835B00E8B4F3 /* FireTestData.swift */,
+				7BF8FC892ACF954E00E8B4F3 /* FleetTestData.swift */,
+				7BF8FC8F2AD032B600E8B4F3 /* ManagementTestData.swift */,
+			);
+			path = "Test Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +274,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B4035062ABA72860094791A /* ContentView.swift in Sources */,
+				7B4035062ABA72860094791A /* MainView.swift in Sources */,
 				7B4035042ABA72860094791A /* VulcanApp.swift in Sources */,
+				7B4035182ABA75B10094791A /* QuickWeatherInfo.swift in Sources */,
+				7BF8FC902AD032B600E8B4F3 /* ManagementTestData.swift in Sources */,
+				7B4035142ABA74600094791A /* NavigationBarView.swift in Sources */,
+				7BF8FC8A2ACF954E00E8B4F3 /* FleetTestData.swift in Sources */,
+				7BF8FC8E2ACF967900E8B4F3 /* Truck.swift in Sources */,
+				7BEDE0262ABB17360031483B /* QuickFireInfo.swift in Sources */,
+				7BF8FC862ACF835B00E8B4F3 /* FireTestData.swift in Sources */,
+				7BEDE0312ABB1D6B0031483B /* MapManager.swift in Sources */,
+				7BF8FC8C2ACF966600E8B4F3 /* Drone.swift in Sources */,
+				7BF8FC842ACF818E00E8B4F3 /* Fire.swift in Sources */,
+				7B32A9F92ABBAFF400CE0603 /* FleetPanel.swift in Sources */,
+				7BEDE0292ABB184F0031483B /* NavigationBarItem.swift in Sources */,
+				7BEDE02F2ABB1C8F0031483B /* MapView.swift in Sources */,
+				7B32A9F42ABBA17100CE0603 /* PanelView.swift in Sources */,
+				7B32A9FB2ABBB00400CE0603 /* FirePanel.swift in Sources */,
+				7B40351A2ABA79380094791A /* WeatherKitManager.swift in Sources */,
+				7B6E99062AD0F4A300ACACB0 /* FireWeatherIndexManager.swift in Sources */,
+				7BF8FC882ACF866100E8B4F3 /* Management.swift in Sources */,
+				7B32A9F72ABBAFED00CE0603 /* GeneralPanel.swift in Sources */,
+				7BEDE02C2ABB19140031483B /* Color.swift in Sources */,
+				7B32A9FD2ABBB16700CE0603 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,10 +431,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Location is used to provide accurate weather information.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aidenmcdougal.Vulcan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,10 +460,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Location is used to provide accurate weather information.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aidenmcdougal.Vulcan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
