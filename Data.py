@@ -9,15 +9,22 @@ response = requests.get(url)
 
 # Check if the request was successful (status code 200)
 if response.status_code == 200:
-    print("Request Complete")
-    # Parse the JSON response data
-    json_data = response.json()
+    # Check if the response contains data (not empty)
+    if response.text.strip():
+        try:
+            # Attempt to parse the JSON response data
+            json_data = response.json()
 
-    # Save the data to a JSON file
-    with open('fire_data.json', 'w') as json_file:
-        json.dump(json_data, json_file, indent=4)
+            # Save the data to a JSON file
+            with open('fire_data.json', 'w') as json_file:
+                json.dump(json_data, json_file, indent=4)
 
-    print("Fire data saved to 'fire_data.json'")
+            print("Fire data saved to 'fire_data.json'")
+        except json.JSONDecodeError as e:
+            print(f"Error parsing JSON: {e}")
+    else:
+        print("The API response is empty.")
 else:
     print(f"Error: {response.status_code} - {response.text}")
+
 
