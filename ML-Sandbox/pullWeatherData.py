@@ -10,12 +10,33 @@ import json
 import requests
 import datetime   # For reformatting, for API requests
 
+# Store data
+import pandas as pd
+
 ###############################################################################
 # User Inputs:
-weatherAPIKey = "e25bb10ced064b3aad9195242230710"
+weatherAPIKey = "e25bb10ced064b3aad9195242230710"       # WeatherAPI key
+LATITUDE = 40.343056
+LONGITUDE = -123.383056
+DATES = [(2023, 10, 7), (2023, 9, 30), (2023, 8, 30)]   # Dates to pull + store
+
+OUTPUTFILENAME = f"WeatherAPI_LAT_{LATITUDE}_LON_{LONGITUDE}" #.csv
 
 ###############################################################################
+# Data Storage Scripts:
+# Stores Object in `name`, locally.
+def storeListOfDictsCSV(list_of_dicts, name):
+    df = pd.DataFrame(list_of_dicts) 
+    df.to_csv(f"./{name}.csv", index=False)
 
+# Pulls dict of dicts:
+def getListOfDictsCSV(name):
+    df = pd.read_csv(f"./{name}.csv")
+    list_of_dictionaries = df.to_dict('')
+    return list_of_dictionaries
+
+###############################################################################
+# Weather API Scripts:
 # Pull JSON Data w/ Python
 def requestAPI(req):
     # Make API request:
@@ -70,18 +91,9 @@ def pullWeatherData(lat, long, date=None):
                "data": weatherData["forecast"]["forecastday"][0]["day"]}
     
     return out
-
-# Stores Object in `name`, locally.
-def storeData(obj, name):
-    '''
-    file_path = os.path.join(save_directory, 'fire_data.csv')
-
-    # Save the data to a CSV file in the specified directory
-    with open(file_path, 'w', newline='') as csv_file:
-        csv_file.write(csv_data)
-    '''
     
 # Pull Weather Frame to feed into ML Training Alg
+#example = pullWeatherFrame(40.343056, -123.383056, (2023,7,31))
 def pullWeatherFrame(lat, long, date_tuple):
     # Instantiate Date object:
     date = datetime.date(date_tuple[0], date_tuple[1], date_tuple[2])    #(Y, M, D)
@@ -101,8 +113,8 @@ def pullWeatherFrame(lat, long, date_tuple):
     out_date = str(date.year) + "-" + str(date.month) + "-" + str(date.day) #YYYY-MM-DD
     
     # Same format as FireWeather data:
-    out = {"latitude": lat, "longitude": long, 
-           "disc_clean_date": out_date,\
+    out = {"latitude": lat, "longitude": long,                                      \
+           "disc_clean_date": out_date,                                             \
            "Temp_pre_15": data_15["avgtemp_c"], "Temp_pre_7":   data_7["avgtemp_c"],\
            "Wind_pre_15": data_15["maxwind_kph"], "Wind_pre_7": data_7["maxwind_kph"],\
            "Hum_pre_15":  data_15["avghumidity"], "Hum_pre_7":  data_7["avghumidity"],\
@@ -111,4 +123,16 @@ def pullWeatherFrame(lat, long, date_tuple):
     
     return out
 
-example = pullWeatherFrame(40.343056, -123.383056, (2023,7,31))
+###############################################################################
+# Sample Storing:
+'''
+outdata = []
+for _date in DATES:
+    formatted_date = datetime.date(_date[0], _date[1], _date[2]) 
+    outdata.append(pullWeatherFrame(LATITUDE, LONGITUDE, _date))
+    
+# Data's ready, store it:
+storeListOfDictsCSV(outdata, OUTPUTFILENAME)
+'''
+# Sample Retrieval:
+indata = getListOfDictsCSV(OUTPUTFILENAME)
