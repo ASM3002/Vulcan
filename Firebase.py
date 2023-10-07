@@ -17,11 +17,15 @@ with open("/Users/jrai/Documents/GitHub/Vulcan/file_data.json", "r") as f:
     json_data = json.load(f)
 
 # Add the JSON data to Firestore
-for document_id, data in enumerate(json_data):
-    # You can use a custom document ID or let Firestore auto-generate one
-    # In this example, we let Firestore auto-generate the document ID
-    # If you want to specify a custom ID, use collection_ref.document('custom_id').set(data) instead
-    document_ref = collection_ref.add(data)
+for i, data in enumerate(json_data, start=1):
+    # Use the document ID from your JSON data or let Firestore auto-generate it
+    document_id = data.get('document_id')  # Replace with the actual identifier in your JSON data
+
+    # Reference to the specific document in the collection
+    document_ref = collection_ref.document(str(i))
+
+    # Use set with merge=True to update or add the document
+    document_ref.set(data, merge=True)
 
 print("Data uploaded to Firestore")
 

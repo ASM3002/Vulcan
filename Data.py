@@ -2,9 +2,12 @@ import requests
 import csv
 import json
 import os  # Import the 'os' module for working with file paths
+import datetime
+
+yesterday = str(datetime.date.today() - datetime.timedelta(days=1))
 
 # Define the API URL
-url = "https://firms.modaps.eosdis.nasa.gov/api/country/csv/39698316900e4e7fc292375d74aa88f1/LANDSAT_NRT/USA/1/2023-09-19"
+url = "https://firms.modaps.eosdis.nasa.gov/api/country/csv/39698316900e4e7fc292375d74aa88f1/LANDSAT_NRT/USA/1/"+yesterday
 
 # Specify the directory where you want to save the file
 save_directory = "/Users/jrai/Documents/GitHub/Vulcan"  # Replace with the actual directory path

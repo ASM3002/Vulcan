@@ -19,4 +19,3 @@ data = {
 
 # Add the data to Firestore
 doc_ref = collection_ref.add(data)
-print(f"Data added with document ID: {doc_ref.id}")
