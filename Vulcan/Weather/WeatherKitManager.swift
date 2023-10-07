@@ -10,12 +10,14 @@ import WeatherKit
 
 @MainActor class WeatherKitManager: ObservableObject {
     @Published var weather: Weather?
+    @Published var isFetchingWeather: Bool = false
     
     func getWeather(latitude: Double, longitude: Double) async {
         do {
-            weather = try await Task.detached(priority: .userInitiated) {
-                return try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
-            }.value
+            let receivedWeather = try await WeatherService.shared.weather(for: .init(latitude: latitude, longitude: longitude))
+            DispatchQueue.main.async {
+                self.weather = receivedWeather
+            }
         } catch {
             print("\(error)")
         }

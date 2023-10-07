@@ -8,11 +8,10 @@
 import Foundation
 
 enum DisplaySelection: String, CaseIterable {
-    case general
-    case fleet
     case fire
+    case alert
 }
 
 class MainViewModel: ObservableObject {
-    @Published var panelDisplaySelection: DisplaySelection = .general
+    @Published var panelDisplaySelection: DisplaySelection = .fire
 }

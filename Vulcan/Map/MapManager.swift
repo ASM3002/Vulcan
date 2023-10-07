@@ -84,11 +84,12 @@ class MapManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         mapView.mapType = mapType
     }
     
-    func focusLocation() {
-        guard let _ = region else {return}
-        mapView.setRegion(region, animated: true)
-        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
-    }
+    func focusSpecificLocation(location: CLLocationCoordinate2D) {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: maxCoordinateDist()[0], longitudinalMeters: maxCoordinateDist()[1])
+            
+            mapView.setRegion(region, animated: true)
+            mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
+        }
     
     //MARK: MAP DATA MANAGEMENT FUNCTIONS
     func drawMapItems() { //Not including Annotations(Pins)
@@ -98,16 +99,64 @@ class MapManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         let region = formattedServiceRegion()
         print("Region has been set")
         let polyline = MKPolyline(coordinates: region, count: region.count)
+        print("Polyline has been  set")
         let overlay: MKOverlay = polyline
         mapView.addOverlay(overlay)
+        print("Overlay added to map")
     }
     
     func formattedServiceRegion() -> [CLLocationCoordinate2D] {
-        var array = self.serviceRegion
-        if array.count > 0 {
-            let first = array[0]
-            array.append(first)
+        var array = ManagementTestData().testAccount.region
+        var newArray: [CLLocationCoordinate2D] = []
+        for coord in array {
+            let clCoord = CLLocationCoordinate2D(latitude: CLLocationDegrees(coord[1]), longitude: CLLocationDegrees(coord[0]))
+            newArray.append(clCoord)
         }
-        return array
+        if array.count > 0 {
+            let first = newArray[0]
+            newArray.append(first)
+        }
+        return newArray
+    }
+    
+    func maxCoordinateDist() -> [Double] {
+        let region = formattedServiceRegion()
+        var minLong = region[0].longitude
+        var maxLong = region[0].longitude
+        var minLat = region[0].latitude
+        var maxLat = region[0].latitude
+        for coord in region {
+            if coord.longitude > maxLong {
+                maxLong = coord.longitude
+            }
+            if coord.longitude < minLong {
+                minLong = coord.longitude
+            }
+            if coord.latitude > maxLat {
+                maxLat = coord.latitude
+            }
+            if coord.latitude < minLat {
+                minLat = coord.latitude
+            }
+        }
+        let latRange = maxLat - minLat
+        let longRange = maxLong - minLong
+        return[latRange*111139,longRange*111139]
+    }
+    
+    func addBaseAnnotation(coord: CLLocationCoordinate2D) {
+        let pointAnnotation = MKPointAnnotation()
+                pointAnnotation.coordinate = coord
+                mapView.addAnnotation(pointAnnotation)
+    }
+    
+    func addFireAnnotations(fires: [Fire]) {
+        for fire in fires {
+            var ann = MKPointAnnotation()
+            ann.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(fire.latitude), longitude: CLLocationDegrees(fire.longitude))
+            ann.title = fire.responseStatus.rawValue.capitalized
+            mapView.addAnnotation(ann)
+        }
+        
     }
 }

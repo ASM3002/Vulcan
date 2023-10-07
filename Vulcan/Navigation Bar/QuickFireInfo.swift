@@ -13,7 +13,7 @@ struct QuickFireInfo: View {
         HStack(alignment: .top, spacing: 10) {
             NavigationBarItem(data: Double(fireTD.suspect.count), decimals: 0, label: "Suspect")
             NavigationBarItem(data: Double(fireTD.verified.count), decimals: 0, label: "Verified")
-            NavigationBarItem(data: Double(fireTD.tending.count), decimals: 0, label: "Tending")
+            NavigationBarItem(data: Double(fireTD.tending.count), decimals: 0, label: "Resp")
         }
     }
 }

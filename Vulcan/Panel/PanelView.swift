@@ -26,12 +26,10 @@ struct PanelView: View {
             .padding(.vertical, 15)
             //DISPLAYED FROM PICKER
             switch mainVM.panelDisplaySelection {
-            case .general:
-                GeneralPanel()
-            case .fleet:
-                FleetPanel()
             case .fire:
                 FirePanel()
+            case .alert:
+                SMSPanel()
             }
             Spacer(minLength: 0.0)
             Text("Powered by NASA LANDSAT")

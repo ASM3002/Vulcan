@@ -12,6 +12,7 @@ struct MainView: View {
     @EnvironmentObject var mainVM: MainViewModel
     @EnvironmentObject var manTestData: ManagementTestData
     @EnvironmentObject var mapManager: MapManager
+    @EnvironmentObject var fireTestData: FireTestData
     
     @State var locationManager = CLLocationManager()
     
@@ -35,10 +36,18 @@ struct MainView: View {
             //Set Delegate
             locationManager.delegate = mapManager
             locationManager.requestAlwaysAuthorization()
-            
-            //Load Region Overlay
-            print("Attempting Overlay Load")
-            mapManager.drawMapItems()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                //Load Region Overlay
+                print("Attempting Overlay Load")
+                mapManager.drawMapItems()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                //Focus Location
+                print("Attempting to focus location")
+                mapManager.focusSpecificLocation(location: CLLocationCoordinate2D(latitude: manTestData.testAccount.base.latitude, longitude: manTestData.testAccount.base.longitude))
+                mapManager.addBaseAnnotation(coord: manTestData.testAccount.base)
+                mapManager.addFireAnnotations(fires: fireTestData.verified)
+            }
         }
         //Permission Denied Alert
         .alert(isPresented: $mapManager.permissionDenied) {

@@ -45,9 +45,18 @@ struct MapView: NSViewRepresentable {
             //Excluding User Blue Circle...
             if annotation.isKind(of: MKUserLocation.self) {return nil}
             else {
-                let pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
-                pinAnnotation.animatesDrop = true
+                let pinAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
+                pinAnnotation.animatesWhenAdded = true
                 pinAnnotation.canShowCallout = true
+                var color = NSColor.blue
+                if annotation.title == "Suspect" {
+                    color = .yellow
+                } else if annotation.title == "Verified" {
+                    color = .red
+                } else if annotation.title == "Responding" {
+                    color = .green
+                }
+                pinAnnotation.markerTintColor = color
                 
                 return pinAnnotation
             }
@@ -55,10 +64,10 @@ struct MapView: NSViewRepresentable {
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             if let polyline = overlay as? MKPolyline {
-              let renderer = MKPolylineRenderer(polyline: polyline)
+                let renderer = MKPolylineRenderer(polyline: polyline)
                 renderer.strokeColor = NSColor(Color.theme.lightGray)
-              renderer.lineWidth = 4
-              return renderer
+                renderer.lineWidth = 4
+                return renderer
             }
 
             return MKOverlayRenderer()

@@ -29,7 +29,7 @@ struct FirePanel: View {
                     ForEach(fireTestData.verified) { fire in
                         PanelFireDisplay(fire: fire)
                     }
-                    Text("Tending")
+                    Text("Responding")
                         .foregroundColor(.theme.white)
                         .fontWeight(.semibold)
                         .font(.title2)
@@ -60,7 +60,7 @@ struct PanelFireDisplay: View {
                     .foregroundColor(.theme.white)
                 Spacer()
                 Text("Elapsed: ").foregroundColor(Color.theme.lightGray) +
-                Text("00:47:00")
+                Text(fire.discoveryTS, style: .relative)
                     .foregroundColor(timeColor(fireStatus: fire.responseStatus))
             }
             .font(.caption)

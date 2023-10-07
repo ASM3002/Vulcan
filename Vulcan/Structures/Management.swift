@@ -11,7 +11,7 @@ import MapKit
 struct Management {
     var id = UUID()
     var name: String
-    var base: CLLocationCoordinate2D?
-    var region: [CLLocationCoordinate2D]?
+    var base: CLLocationCoordinate2D
+    var region: [[Float]]
     var timeStamp: Date
 }
