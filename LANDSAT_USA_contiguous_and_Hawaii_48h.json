@@ -1,0 +1,80 @@
+[
+    {
+        "latitude": "39.833558",
+        "longitude": "-121.141832",
+        "path": "44",
+        "row": "34",
+        "scan": "4355",
+        "track": "3954",
+        "acq_date": "10/5/23",
+        "acq_time": "1846",
+        "satellite": "L8",
+        "confidence": "high",
+        "daynight": "D"
+    },
+    {
+        "latitude": "39.833828",
+        "longitude": "-121.140932",
+        "path": "44",
+        "row": "34",
+        "scan": "4355",
+        "track": "3955",
+        "acq_date": "10/5/23",
+        "acq_time": "1846",
+        "satellite": "L8",
+        "confidence": "medium",
+        "daynight": "D"
+    },
+    {
+        "latitude": "39.871058",
+        "longitude": "-121.136201",
+        "path": "44",
+        "row": "34",
+        "scan": "4356",
+        "track": "3953",
+        "acq_date": "10/5/23",
+        "acq_time": "1846",
+        "satellite": "L8",
+        "confidence": "low",
+        "daynight": "D"
+    },
+    {
+        "latitude": "40.073189",
+        "longitude": "-121.130591",
+        "path": "44",
+        "row": "34",
+        "scan": "4356",
+        "track": "3954",
+        "acq_date": "10/5/23",
+        "acq_time": "1846",
+        "satellite": "L8",
+        "confidence": "high",
+        "daynight": "D"
+    },
+    {
+        "latitude": "40.073456",
+        "longitude": "-121.120277",
+        "path": "44",
+        "row": "34",
+        "scan": "4421",
+        "track": "3157",
+        "acq_date": "10/5/23",
+        "acq_time": "1846",
+        "satellite": "L8",
+        "confidence": "high",
+        "daynight": "D"
+    },
+    {
+        "latitude": "40.073459",
+        "longitude": "-121.120277",
+        "path": "44",
+        "row": "34",
+        "scan": "4456",
+        "track": "4848",
+        "acq_date": "10/5/23",
+        "acq_time": "1846",
+        "satellite": "L8",
+        "confidence": "high",
+        "daynight": "D"
+    }
+]
