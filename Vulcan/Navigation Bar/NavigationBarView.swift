@@ -11,7 +11,7 @@ struct NavigationBarView: View {
     @EnvironmentObject var mainVM: MainViewModel
     var body: some View {
         HStack(alignment: .top, spacing: 5) {
-            QuickWeatherInfo()
+            //QuickWeatherInfo()
             Capsule()
                 .frame(width: 3, height: 30)
                 .foregroundColor(.theme.white)

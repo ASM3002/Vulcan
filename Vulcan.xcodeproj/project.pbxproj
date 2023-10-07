@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F055BE42AD1BDC6000192DD /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */; };
+		2F055BE72AD1BFE4000192DD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BE62AD1BFE4000192DD /* FirebaseAnalytics */; };
+		2F055BE92AD1BFE4000192DD /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BE82AD1BFE4000192DD /* FirebaseAnalyticsOnDeviceConversion */; };
+		2F055BEB2AD1BFE4000192DD /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BEA2AD1BFE4000192DD /* FirebaseAnalyticsSwift */; };
+		2F055BED2AD1BFE4000192DD /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BEC2AD1BFE4000192DD /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		2F055BEF2AD1BFE4000192DD /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BEE2AD1BFE4000192DD /* FirebaseAppCheck */; };
 		7B32A9F42ABBA17100CE0603 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F32ABBA17100CE0603 /* PanelView.swift */; };
 		7B32A9FB2ABBB00400CE0603 /* FirePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9FA2ABBB00400CE0603 /* FirePanel.swift */; };
 		7B32A9FD2ABBB16700CE0603 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9FC2ABBB16700CE0603 /* MainViewModel.swift */; };
@@ -64,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		7B32A9F32ABBA17100CE0603 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		7B32A9FA2ABBB00400CE0603 /* FirePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirePanel.swift; sourceTree = "<group>"; };
 		7B32A9FC2ABBB16700CE0603 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -184,6 +191,7 @@
 				7BF8FC822ACF817400E8B4F3 /* Test Data */,
 				7B4035072ABA72870094791A /* Assets.xcassets */,
 				7B40350C2ABA72870094791A /* Vulcan.entitlements */,
+				2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */,
 				7B4035092ABA72870094791A /* Preview Content */,
 			);
 			path = Vulcan;
@@ -391,6 +399,7 @@
 				7BF8FC882ACF866100E8B4F3 /* Management.swift in Sources */,
 				7BEDE02C2ABB19140031483B /* Color.swift in Sources */,
 				7B32A9FD2ABBB16700CE0603 /* MainViewModel.swift in Sources */,
+				2F055BE42AD1BDC6000192DD /* PhoneNumber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,11 +525,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Vulcan/Vulcan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vulcan/Preview Content\"";
-				DEVELOPMENT_TEAM = BBVWKYQ2W4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -532,8 +542,9 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidenmcdougal.Vulcan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raijashan17.vulcan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -545,11 +556,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Vulcan/Vulcan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Vulcan/Preview Content\"";
-				DEVELOPMENT_TEAM = BBVWKYQ2W4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -561,8 +573,9 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidenmcdougal.Vulcan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raijashan17.vulcan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
