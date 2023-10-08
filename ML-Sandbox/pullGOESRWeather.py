@@ -228,26 +228,3 @@ for indDate, _date in enumerate(DATES):
     
     # Output to CSV
     outdata.to_csv(f"./{CSV_NAME}.csv", index=False)
-    
-    '''
-# Read data:
-for indDate, _date in enumerate(DATES):
-    for _ind in range(len(LATITUDE)):
-        tmp_lat = LATITUDE[_ind]
-        tmp_lon = LONGITUDE[_ind]
-        
-        voi_arr = []
-        for indVOI, _voi_str in enumerate(VOI_STR):
-            _ds = ds_dict[indDate][indVOI]
-            _voi = getMeanVOI(_voi_str, _ds, tmp_lat, tmp_lon, LAT_TOL, LON_TOL)
-            voi_arr.append(_voi)
-            print(f"DATE: {_date}\t LAT: {LATITUDE[_ind]}\tLON: {LONGITUDE[_ind]}\tVOI: {_voi}")
-            
-        tmp_dict = {'latitude': tmp_lat, 'longitude': tmp_lon, 'date': _date}
-        tmp_dict.update({key: value for key, value in zip(VOI_STR, voi_arr)})
-        
-        outdata = pd.concat([outdata, pd.DataFrame([tmp_dict])], ignore_index=True)
-        # Output to CSV
-        outdata.to_csv(f"./{CSV_NAME}.csv", index=False)
-        
-        '''
