@@ -22,8 +22,8 @@ import time
 
 ###############################################################################
 # USER INPUTS:    
-LATITUDE = [40.343056]   # len(LATITUDE) dictates # locations queried
-LONGITUDE = [-123.383056]
+LATITUDE = [41.429780, 40.343056]   # len(LATITUDE) dictates # locations queried
+LONGITUDE = [-81.833320, -123.383056]
 LAT_TOL = 0.05
 LON_TOL = 0.05
 
@@ -39,13 +39,13 @@ CSV_NAME = f"GOES-R_" + str(VOI_STR) + "_LAT_" + str(LATITUDE) \
 DATES = [(2023, 10, 8), (2020, 10, 8), (2000, 1, 1)]
 for ind, _date in enumerate(DATES):
     DATES[ind] = datetime.date(_date[0], _date[1], _date[2])
-
 '''
+
 weather_df = pd.read_csv('Weather.csv')
 DATES = weather_df['disc_clean_date'].tolist()
 for ind, _date in enumerate(DATES):
     DATES[ind] = datetime.datetime.strptime(_date, "%Y-%m-%d").date()
-
+  
 ###############################################################################
 # External Packages:
 '''
@@ -196,40 +196,13 @@ outdata = pd.DataFrame(columns=['latitude', 'longitude', 'date'] + [str(i) for i
 # Pull data first:
 ds_dict = np.empty((len(DATES), len(VOI_STR)), dtype=object)
 for indDate, _date in enumerate(DATES):
-    voi_arr = np.empty((len(VOI_STR), len(LATITUDE)), dtype=object)
-    
     for indVOI, _voi_str in enumerate(VOI_STR):
         # For the user:
         print(f"QUERYING: DATE: {_date}, VOI: {_voi_str}")
         # Pull data:
         day_of_year = getDayOfYear(_date)
-        _ds = getDataset(_voi_str, _date.year, day_of_year, 0)
-        ds_dict[indDate][indVOI] = _ds
-        
-        # Pull VOI per Latitude/Longitude
-        for _ind in range(len(LATITUDE)):
-            tmp_lat = LATITUDE[_ind]
-            tmp_lon = LONGITUDE[_ind]
-            
-            _voi = getMeanVOI(_voi_str, _ds, tmp_lat, tmp_lon, LAT_TOL, LON_TOL)
-            voi_arr[indVOI, _ind] = _voi
-            print(f"DATE: {_date}\t LAT: {LATITUDE[_ind]}\tLON: {LONGITUDE[_ind]}\tVOI: {_voi}")
-            
-    # Collect all VOIs into a row:
-    for _ind in range(len(LATITUDE)):
-        tmp_lat = LATITUDE[_ind]
-        tmp_lon = LONGITUDE[_ind]
-        
-        tmp_dict = {'latitude': tmp_lat, 'longitude': tmp_lon, 'date': _date}
-        tmp_dict.update({key: value for key, value in zip(VOI_STR, voi_arr[:,_ind])})
-
-        # Insert    
-        outdata = pd.concat([outdata, pd.DataFrame([tmp_dict])], ignore_index=True)
+        ds_dict[indDate][indVOI] = getDataset(_voi_str, _date.year, day_of_year, 0)
     
-    # Output to CSV
-    outdata.to_csv(f"./{CSV_NAME}.csv", index=False)
-    
-    '''
 # Read data:
 for indDate, _date in enumerate(DATES):
     for _ind in range(len(LATITUDE)):
@@ -247,7 +220,6 @@ for indDate, _date in enumerate(DATES):
         tmp_dict.update({key: value for key, value in zip(VOI_STR, voi_arr)})
         
         outdata = pd.concat([outdata, pd.DataFrame([tmp_dict])], ignore_index=True)
-        # Output to CSV
-        outdata.to_csv(f"./{CSV_NAME}.csv", index=False)
         
-        '''
+# Output to CSV
+outdata.to_csv(f"./{CSV_NAME}.csv", index=False)
