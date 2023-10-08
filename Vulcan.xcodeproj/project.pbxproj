@@ -18,6 +18,7 @@
 		2F6C61552AD232E200F5D6AD /* APIToExcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C61542AD232E100F5D6AD /* APIToExcel.swift */; };
 		2F6C61572AD2413500F5D6AD /* APIToDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C61562AD2413500F5D6AD /* APIToDatabase.swift */; };
 		2F6C615C2AD24F2B00F5D6AD /* JSONToDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C615B2AD24F2B00F5D6AD /* JSONToDatabase.swift */; };
+		2F6C61602AD2E4E300F5D6AD /* FireTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C615F2AD2E4E300F5D6AD /* FireTestData.swift */; };
 		7B32A9F42ABBA17100CE0603 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F32ABBA17100CE0603 /* PanelView.swift */; };
 		7B32A9F72ABBAFED00CE0603 /* GeneralPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */; };
 		7B32A9F92ABBAFF400CE0603 /* FleetPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */; };
@@ -52,6 +53,7 @@
 		2F6C61542AD232E100F5D6AD /* APIToExcel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToExcel.swift; sourceTree = "<group>"; };
 		2F6C61562AD2413500F5D6AD /* APIToDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToDatabase.swift; sourceTree = "<group>"; };
 		2F6C615B2AD24F2B00F5D6AD /* JSONToDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONToDatabase.swift; sourceTree = "<group>"; };
+		2F6C615F2AD2E4E300F5D6AD /* FireTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTestData.swift; sourceTree = "<group>"; };
 		7B32A9F32ABBA17100CE0603 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPanel.swift; sourceTree = "<group>"; };
 		7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetPanel.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				7B40350C2ABA72870094791A /* Vulcan.entitlements */,
 				2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */,
 				2F6C61502AD22BD100F5D6AD /* APIToJSON.swift */,
+				2F6C615F2AD2E4E300F5D6AD /* FireTestData.swift */,
 				2F6C61562AD2413500F5D6AD /* APIToDatabase.swift */,
 				2F6C615B2AD24F2B00F5D6AD /* JSONToDatabase.swift */,
 				2F6C61522AD2310500F5D6AD /* ExcelToJSON.swift */,
@@ -317,6 +320,7 @@
 				7B4035182ABA75B10094791A /* QuickWeatherInfo.swift in Sources */,
 				2F6C61552AD232E200F5D6AD /* APIToExcel.swift in Sources */,
 				7BF8FC902AD032B600E8B4F3 /* ManagementTestData.swift in Sources */,
+				2F6C61602AD2E4E300F5D6AD /* FireTestData.swift in Sources */,
 				7B4035142ABA74600094791A /* NavigationBarView.swift in Sources */,
 				7BF8FC8A2ACF954E00E8B4F3 /* FleetTestData.swift in Sources */,
 				7BF8FC8E2ACF967900E8B4F3 /* Truck.swift in Sources */,

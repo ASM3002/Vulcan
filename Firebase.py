@@ -55,7 +55,7 @@ with open(json_file_path, 'w') as json_file:
     json_file.write(json_data)
 
 print(f"CSV data converted to JSON and saved to '{json_file_path}'")
-
+'''
 # Initialize Firebase Admin SDK with your service account key
 cred = credentials.Certificate('/Users/jrai/Documents/GitHub/Vulcan/vulcan-203a4-firebase-adminsdk-j79bb-014b7ab941.json')
 firebase_admin.initialize_app(cred)
@@ -80,4 +80,4 @@ for document_id, data in enumerate(json_data):
     
 print("Data uploaded to Firestore")
 
-
+'''
