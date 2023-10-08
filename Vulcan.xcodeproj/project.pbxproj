@@ -15,6 +15,7 @@
 		2F055BEF2AD1BFE4000192DD /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BEE2AD1BFE4000192DD /* FirebaseAppCheck */; };
 		2F6C61512AD22BD100F5D6AD /* APIToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C61502AD22BD100F5D6AD /* APIToJSON.swift */; };
 		2F6C61532AD2310500F5D6AD /* ExcelToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C61522AD2310500F5D6AD /* ExcelToJSON.swift */; };
+		2F6C61552AD232E200F5D6AD /* APIToExcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C61542AD232E100F5D6AD /* APIToExcel.swift */; };
 		7B32A9F42ABBA17100CE0603 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F32ABBA17100CE0603 /* PanelView.swift */; };
 		7B32A9F72ABBAFED00CE0603 /* GeneralPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */; };
 		7B32A9F92ABBAFF400CE0603 /* FleetPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */; };
@@ -46,6 +47,7 @@
 		2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		2F6C61502AD22BD100F5D6AD /* APIToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToJSON.swift; sourceTree = "<group>"; };
 		2F6C61522AD2310500F5D6AD /* ExcelToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcelToJSON.swift; sourceTree = "<group>"; };
+		2F6C61542AD232E100F5D6AD /* APIToExcel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToExcel.swift; sourceTree = "<group>"; };
 		7B32A9F32ABBA17100CE0603 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPanel.swift; sourceTree = "<group>"; };
 		7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetPanel.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */,
 				2F6C61502AD22BD100F5D6AD /* APIToJSON.swift */,
 				2F6C61522AD2310500F5D6AD /* ExcelToJSON.swift */,
+				2F6C61542AD232E100F5D6AD /* APIToExcel.swift */,
 				7B4035092ABA72870094791A /* Preview Content */,
 			);
 			path = Vulcan;
@@ -306,6 +309,7 @@
 				7B4035062ABA72860094791A /* MainView.swift in Sources */,
 				7B4035042ABA72860094791A /* VulcanApp.swift in Sources */,
 				7B4035182ABA75B10094791A /* QuickWeatherInfo.swift in Sources */,
+				2F6C61552AD232E200F5D6AD /* APIToExcel.swift in Sources */,
 				7BF8FC902AD032B600E8B4F3 /* ManagementTestData.swift in Sources */,
 				7B4035142ABA74600094791A /* NavigationBarView.swift in Sources */,
 				7BF8FC8A2ACF954E00E8B4F3 /* FleetTestData.swift in Sources */,
