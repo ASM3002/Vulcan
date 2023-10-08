@@ -18,8 +18,34 @@ import pandas as pd
 weatherAPIKey = "e25bb10ced064b3aad9195242230710"       # WeatherAPI key
 LATITUDE = 40.343056
 LONGITUDE = -123.383056
-DATES = [(2023, 10, 7), (2023, 9, 30), (2023, 8, 30)]   # Dates to pull + store
 
+from datetime import datetime, timedelta
+
+# Get the current date
+current_date = datetime.today() + timedelta(days=1)
+
+# Initialize an empty list to store the dates
+DATES = []
+
+# Calculate the date from exactly one year ago
+one_year_ago = current_date - timedelta(days=360)
+
+# Loop through the past year and add each date to the list
+while one_year_ago < current_date:
+    year = one_year_ago.year
+    month = one_year_ago.month
+    day = one_year_ago.day
+    DATES.append(one_year_ago)
+    # DATES.append((year, month, day))
+    print(DATES)
+    
+    # Move to the next day
+    one_year_ago += timedelta(days=1)
+
+# balls = datetime.date(DATES[0][0], DATES[0][1], DATES[0][2])
+# print(balls)
+# input("Balls?")
+    
 OUTPUTFILENAME = f"WeatherAPI_LAT_{LATITUDE}_LON_{LONGITUDE}" #.csv
 
 ###############################################################################
@@ -94,26 +120,26 @@ def pullWeatherData(lat, long, date=None):
     
 # Pull Weather Frame to feed into ML Training Alg
 #example = pullWeatherFrame(40.343056, -123.383056, (2023,7,31))
-def pullWeatherFrame(lat, long, date_tuple):
+def pullWeatherFrame(lat, long, date):
     # Instantiate Date object:
-    date = datetime.date(date_tuple[0], date_tuple[1], date_tuple[2])    #(Y, M, D)
+    # date = datetime.date(date_tuple[0], date_tuple[1], date_tuple[2])    #(Y, M, D)
     
     # 0 Days Ago:
     weather_0 = pullWeatherData(lat, long, date.strftime("%Y-%m-%d"))
     data_0 = weather_0["data"]        
     
     # 7 Days Ago:
-    date -= datetime.timedelta(days=7)
+    date -= timedelta(days=7)
     weather_7 = pullWeatherData(lat, long, date.strftime("%Y-%m-%d"))
     data_7 = weather_7["data"]
     
     # 15 Days Ago:
-    date -= datetime.timedelta(days=8)
+    date -= timedelta(days=8)
     weather_15 = pullWeatherData(lat, long, date.strftime("%Y-%m-%d"))
     data_15 = weather_15["data"]
     
-    date += datetime.timedelta(days=7)
-    date += datetime.timedelta(days=8)  # ew ew ew
+    date += timedelta(days=7)
+    date += timedelta(days=8)  # ew ew ew
     out_date = str(date.year) + "-" + str(date.month) + "-" + str(date.day) #YYYY-MM-DD
     
     # Same format as FireWeather data:
@@ -134,14 +160,15 @@ def pullWeatherFrame(lat, long, date_tuple):
 
 ###############################################################################
 # Sample Storing:
-'''
+print(type(DATES[0]))
 outdata = []
-for _date in DATES:
-    formatted_date = datetime.date(_date[0], _date[1], _date[2]) 
-    outdata.append(pullWeatherFrame(LATITUDE, LONGITUDE, _date))
+for date in DATES:
+    # formatted_date = datetime.date(_date[0], _date[1], _date[2]) 
+    print(date)
+    outdata.append(pullWeatherFrame(LATITUDE, LONGITUDE, date))
     
 # Data's ready, store it:
 storeListOfDictsCSV(outdata, OUTPUTFILENAME)
-'''
+
 # Sample Retrieval:
 indata = getListOfDictsCSV(OUTPUTFILENAME)
