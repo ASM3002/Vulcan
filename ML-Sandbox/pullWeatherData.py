@@ -28,7 +28,7 @@ current_date = datetime.today() + timedelta(days=1)
 DATES = []
 
 # Calculate the date from exactly one year ago
-one_year_ago = current_date - timedelta(days=360)
+one_year_ago = current_date - timedelta(days=(360 - 16))
 
 # Loop through the past year and add each date to the list
 while one_year_ago < current_date:
@@ -37,7 +37,6 @@ while one_year_ago < current_date:
     day = one_year_ago.day
     DATES.append(one_year_ago)
     # DATES.append((year, month, day))
-    print(DATES)
     
     # Move to the next day
     one_year_ago += timedelta(days=1)
@@ -159,8 +158,8 @@ def pullWeatherFrame(lat, long, date):
     return out
 
 ###############################################################################
+'''
 # Sample Storing:
-print(type(DATES[0]))
 outdata = []
 for date in DATES:
     # formatted_date = datetime.date(_date[0], _date[1], _date[2]) 
@@ -169,6 +168,6 @@ for date in DATES:
     
 # Data's ready, store it:
 storeListOfDictsCSV(outdata, OUTPUTFILENAME)
-
+'''
 # Sample Retrieval:
 indata = getListOfDictsCSV(OUTPUTFILENAME)
