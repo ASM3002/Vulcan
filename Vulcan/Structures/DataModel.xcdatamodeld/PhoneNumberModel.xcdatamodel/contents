@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Fire" representedClassName="Fire" syncable="YES" codeGenerationType="class">
+        <attribute name="confidence" attributeType="String" defaultValueString="Low"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="latitude" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="responseStatus" attributeType="String" defaultValueString="Suspect"/>
+        <attribute name="timeStamp" attributeType="Date" defaultDateTimeInterval="718414620" usesScalarValueType="NO"/>
+    </entity>
     <entity name="PhoneNumber" representedClassName="PhoneNumber" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="phoneNumber" attributeType="String" defaultValueString="&quot;&quot;"/>
+    </entity>
+    <entity name="SMSPush" representedClassName="SMSPush" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="message" attributeType="String" defaultValueString="&quot;Default&quot;"/>
+        <attribute name="severity" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="subject" attributeType="String" defaultValueString="&quot;Default"/>
+        <attribute name="timeStamp" attributeType="Date" defaultDateTimeInterval="718417680" usesScalarValueType="NO"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
 </model>

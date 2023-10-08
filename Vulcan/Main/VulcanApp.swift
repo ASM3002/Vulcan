@@ -13,6 +13,9 @@ struct VulcanApp: App {
     @StateObject var manTestData = ManagementTestData()
     @StateObject var fireTestData = FireTestData()
     @ObservedObject var mapManager = MapManager()
+    @StateObject var dataController = DataController()
+    @StateObject var smsManager = SMSManager()
+    @ObservedObject var weatherKitManager = WeatherKitManager()
     var body: some Scene {
         WindowGroup {
             MainView()
@@ -20,6 +23,9 @@ struct VulcanApp: App {
                 .environmentObject(manTestData)
                 .environmentObject(fireTestData)
                 .environmentObject(mapManager)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(smsManager)
+                .environmentObject(weatherKitManager)
         }
     }
 }

@@ -106,7 +106,7 @@ class MapManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func formattedServiceRegion() -> [CLLocationCoordinate2D] {
-        var array = ManagementTestData().testAccount.region
+        let array = ManagementTestData().testAccount.region
         var newArray: [CLLocationCoordinate2D] = []
         for coord in array {
             let clCoord = CLLocationCoordinate2D(latitude: CLLocationDegrees(coord[1]), longitude: CLLocationDegrees(coord[0]))
@@ -146,11 +146,12 @@ class MapManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func addBaseAnnotation(coord: CLLocationCoordinate2D) {
         let pointAnnotation = MKPointAnnotation()
-                pointAnnotation.coordinate = coord
-                mapView.addAnnotation(pointAnnotation)
+        pointAnnotation.coordinate = coord
+        pointAnnotation.title = "HQ"
+        mapView.addAnnotation(pointAnnotation)
     }
     
-    func addFireAnnotations(fires: [Fire]) {
+    func addFireAnnotations(fires: [Fire_Old]) {
         for fire in fires {
             var ann = MKPointAnnotation()
             ann.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(fire.latitude), longitude: CLLocationDegrees(fire.longitude))

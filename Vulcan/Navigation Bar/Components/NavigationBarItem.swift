@@ -24,7 +24,7 @@ struct NavigationBarItem: View {
         }
         .foregroundColor(.theme.darkGray)
         .padding(5)
-        .frame(width: 90)
+        .frame(width: 95)
         .background {
             RoundedRectangle(cornerRadius: 5)
                 .foregroundColor(.theme.white)

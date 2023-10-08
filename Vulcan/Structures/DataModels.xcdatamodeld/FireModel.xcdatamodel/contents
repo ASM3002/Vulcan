@@ -8,4 +8,7 @@
         <attribute name="responseStatus" attributeType="String" defaultValueString="&quot;Suspect"/>
         <attribute name="timeStamp" attributeType="Date" defaultDateTimeInterval="718412160" usesScalarValueType="NO"/>
     </entity>
+    <entity name="PhoneNumber" representedClassName="PhoneNumber" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES"/>
+    </entity>
 </model>

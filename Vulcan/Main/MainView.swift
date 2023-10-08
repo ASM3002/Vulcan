@@ -13,6 +13,9 @@ struct MainView: View {
     @EnvironmentObject var manTestData: ManagementTestData
     @EnvironmentObject var mapManager: MapManager
     @EnvironmentObject var fireTestData: FireTestData
+    @EnvironmentObject var smsManager: SMSManager
+    @EnvironmentObject var weatherKitManager: WeatherKitManager
+    @Environment(\.managedObjectContext) var managedObjContext
     
     @State var locationManager = CLLocationManager()
     
@@ -46,7 +49,16 @@ struct MainView: View {
                 print("Attempting to focus location")
                 mapManager.focusSpecificLocation(location: CLLocationCoordinate2D(latitude: manTestData.testAccount.base.latitude, longitude: manTestData.testAccount.base.longitude))
                 mapManager.addBaseAnnotation(coord: manTestData.testAccount.base)
+                mapManager.addFireAnnotations(fires: fireTestData.suspect)
                 mapManager.addFireAnnotations(fires: fireTestData.verified)
+                mapManager.addFireAnnotations(fires: fireTestData.tending)
+                
+                let temp = weatherKitManager.weather?.currentWeather.temperature.value ?? 15.0
+                let wind = weatherKitManager.weather?.currentWeather.wind.speed.value ?? 5.0
+                let humidity = weatherKitManager.weather?.currentWeather.humidity ?? 40.0
+                if smsManager.testFireProbability(temp: temp, wind: wind, humidity: humidity) && fireTestData.suspect != nil {
+                    DataController().addSMSPush(severity: 2, subject: "Fires Likely Nearby", message: "There may be fires in your area, proceed with caution - SPACE APPS TEST, THIS IS NOT AN EMERGENCY", url: nil, context: managedObjContext)
+                }
             }
         }
         //Permission Denied Alert

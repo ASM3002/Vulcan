@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Fire: Identifiable {
+struct Fire_Old: Identifiable {
     var id = UUID()
     var longitude: Float
     var latitude: Float
@@ -17,7 +17,7 @@ struct Fire: Identifiable {
 }
 
 enum ResponseStatus: String {
-    case suspect, verified, tending
+    case suspect, verified, responding
 }
 
 enum FireConfidence: String {

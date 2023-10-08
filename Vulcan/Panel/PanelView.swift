@@ -38,6 +38,7 @@ struct PanelView: View {
                 .font(.headline)
         }
         .padding(.horizontal, 5)
+        .padding(.bottom, 10)
     }
 }
 

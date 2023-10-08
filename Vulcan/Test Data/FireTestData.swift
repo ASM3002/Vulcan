@@ -8,35 +8,40 @@
 import Foundation
 
 class FireTestData: ObservableObject {
-    @Published var suspect: [Fire] = [
-        Fire(longitude: 39.20,
-             latitude: 38.98,
+    @Published var suspect: [Fire_Old] = [
+        Fire_Old(longitude: -121.63,
+                 latitude: 39.77,
+                 confidence: .high,
+                 discoveryTS: Date(timeIntervalSince1970: 1696767324),
+                 responseStatus: .suspect),
+        Fire_Old(longitude: -121.38,
+                 latitude: 39.54,
+                 confidence: .high,
+                 discoveryTS: Date(timeIntervalSince1970: 1696760124),
+                 responseStatus: .suspect)
+    ]
+    @Published var verified: [Fire_Old] = [
+        Fire_Old(longitude: -121.47,
+                 latitude: 39.65,
+                 confidence: .low,
+                 discoveryTS: Date(timeIntervalSince1970: 1696741704),
+                 responseStatus: .verified),
+        Fire_Old(longitude: -121.83,
+                 latitude: 39.57,
+                 confidence: .low,
+                 discoveryTS: Date(timeIntervalSince1970: 1696735824),
+                 responseStatus: .verified)
+    ]
+    @Published var tending: [Fire_Old] = [
+        Fire_Old(longitude: -121.8527,
+             latitude: 39.739868,
+             confidence: .high,
+             discoveryTS: Date(timeIntervalSince1970: 1696707924),
+             responseStatus: .responding),
+        Fire_Old(longitude: -121.83,
+             latitude: 39.69,
              confidence: .low,
-             discoveryTS: Date(timeIntervalSince1970: 12345506),
-             responseStatus: .suspect),
-        Fire(longitude: 42.20,
-             latitude: 38.98,
-             confidence: .medium,
-             discoveryTS: Date(timeIntervalSince1970: 12345506),
-             responseStatus: .suspect)
-    ]
-    @Published var verified: [Fire] = [
-        Fire(longitude: -121.20,
-             latitude: 39.10,
-             confidence: .high,
-             discoveryTS: Date(timeIntervalSince1970: 12345506),
-             responseStatus: .verified),
-        Fire(longitude: -121.20,
-             latitude: 39.11,
-             confidence: .high,
-             discoveryTS: Date(timeIntervalSince1970: 12345506),
-             responseStatus: .verified)
-    ]
-    @Published var tending: [Fire] = [
-        Fire(longitude: 42.20,
-             latitude: 38.98,
-             confidence: .high,
-             discoveryTS: Date(timeIntervalSince1970: 12345506),
-             responseStatus: .tending)
+             discoveryTS: Date(timeIntervalSince1970: 1696640724),
+             responseStatus: .responding)
     ]
 }

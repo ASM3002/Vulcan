@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct FirePanel: View {
+    @Environment(\.managedObjectContext) var managedObjContext
     @EnvironmentObject var fireTestData: FireTestData
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.timeStamp, order: .reverse)], predicate: NSPredicate(format: "responseStatus == %@", "suspect")) var suspectFires: FetchedResults<Fire>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.timeStamp, order: .reverse)], predicate: NSPredicate(format: "responseStatus == %@", "verified")) var verifiedFires: FetchedResults<Fire>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.timeStamp, order: .reverse)], predicate: NSPredicate(format: "responseStatus == %@", "resp")) var respondingFires: FetchedResults<Fire>
     var body: some View {
         VStack(spacing: 15) {
             ScrollView(.vertical, showsIndicators: true) {
@@ -45,18 +49,18 @@ struct FirePanel: View {
 }
 
 struct PanelFireDisplay: View {
-    var fire: Fire
+    var fire: Fire_Old
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
                 Text("\(fire.longitude)N , \(fire.latitude)W")
                 Spacer(minLength: 50)
-                Text(fire.confidence.rawValue.capitalized)
+                Text("H")
             }
             .font(.subheadline)
             .foregroundColor(.theme.white)
             HStack {
-                Text("Cleveland Heights OH 44106")
+                Text("Butte County, CA")
                     .foregroundColor(.theme.white)
                 Spacer()
                 Text("Elapsed: ").foregroundColor(Color.theme.lightGray) +

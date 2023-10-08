@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 
 struct QuickWeatherInfo: View {
-    @ObservedObject var weatherKitManager = WeatherKitManager()
+    @EnvironmentObject var weatherKitManager: WeatherKitManager
     @EnvironmentObject var manTestData: ManagementTestData
     @StateObject var fwiManager = FosbergFWIManager()
     var body: some View {
@@ -24,13 +24,13 @@ struct QuickWeatherInfo: View {
                     .font(.title2)
             }
         }
-//        .onAppear {
-//            Task {
-//                try await weatherKitManager.getWeather(latitude: manTestData.testAccount.base!.latitude, longitude: manTestData.testAccount.base!.longitude)
-//                //await print(weatherKitManager.weather)
-//                
-//            }
-//        }
+        .onAppear {
+            Task {
+                try await weatherKitManager.getWeather(latitude: manTestData.testAccount.base.latitude, longitude: manTestData.testAccount.base.longitude)
+                await print(weatherKitManager.weather)
+                
+            }
+        }
     }
 }
 
