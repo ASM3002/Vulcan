@@ -14,6 +14,7 @@
 		2F055BED2AD1BFE4000192DD /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BEC2AD1BFE4000192DD /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		2F055BEF2AD1BFE4000192DD /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2F055BEE2AD1BFE4000192DD /* FirebaseAppCheck */; };
 		2F6C61512AD22BD100F5D6AD /* APIToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C61502AD22BD100F5D6AD /* APIToJSON.swift */; };
+		2F6C61532AD2310500F5D6AD /* ExcelToJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C61522AD2310500F5D6AD /* ExcelToJSON.swift */; };
 		7B32A9F42ABBA17100CE0603 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F32ABBA17100CE0603 /* PanelView.swift */; };
 		7B32A9F72ABBAFED00CE0603 /* GeneralPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */; };
 		7B32A9F92ABBAFF400CE0603 /* FleetPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		2F6C61502AD22BD100F5D6AD /* APIToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToJSON.swift; sourceTree = "<group>"; };
+		2F6C61522AD2310500F5D6AD /* ExcelToJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcelToJSON.swift; sourceTree = "<group>"; };
 		7B32A9F32ABBA17100CE0603 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		7B32A9F62ABBAFED00CE0603 /* GeneralPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPanel.swift; sourceTree = "<group>"; };
 		7B32A9F82ABBAFF400CE0603 /* FleetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetPanel.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				7B40350C2ABA72870094791A /* Vulcan.entitlements */,
 				2F055BE32AD1BDC6000192DD /* PhoneNumber.swift */,
 				2F6C61502AD22BD100F5D6AD /* APIToJSON.swift */,
+				2F6C61522AD2310500F5D6AD /* ExcelToJSON.swift */,
 				7B4035092ABA72870094791A /* Preview Content */,
 			);
 			path = Vulcan;
@@ -310,6 +313,7 @@
 				7BEDE0262ABB17360031483B /* QuickFireInfo.swift in Sources */,
 				7BF8FC862ACF835B00E8B4F3 /* FireTestData.swift in Sources */,
 				7BEDE0312ABB1D6B0031483B /* MapManager.swift in Sources */,
+				2F6C61532AD2310500F5D6AD /* ExcelToJSON.swift in Sources */,
 				7BF8FC8C2ACF966600E8B4F3 /* Drone.swift in Sources */,
 				7BF8FC842ACF818E00E8B4F3 /* Fire.swift in Sources */,
 				7B32A9F92ABBAFF400CE0603 /* FleetPanel.swift in Sources */,
