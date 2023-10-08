@@ -6,7 +6,7 @@ Created on Sat Oct  7 20:13:48 2023
 
 @author: dmtrm
 """
-# import packages
+# GOES-R Dataset Info
 import xarray as xr # note: pip install netcdf4 pydap
 from matplotlib import pyplot as plt
 import numpy as np
@@ -15,8 +15,37 @@ import fsspec
 from botocore import UNSIGNED
 from botocore.config import Config
 
-from netCDF4 import Dataset
+import datetime # use datetime.date, datetime.timedelta
+import pandas as pd # to store data nicely
+import traceback # to handle errors gracefully & in detail
+import time
 
+###############################################################################
+# USER INPUTS:    
+LATITUDE = [41.429780, 40.343056]   # len(LATITUDE) dictates # locations queried
+LONGITUDE = [-81.833320, -123.383056]
+LAT_TOL = 0.05
+LON_TOL = 0.05
+
+# LST - Land Surface Temp (Skin)
+# AOD - Aerosol Optical Depth, COD - Cloud Optical Depth
+# Would like to implement Derived Motion Winds as well
+VOI_STR = ["LST"]
+
+CSV_NAME = f"GOES-R_" + str(VOI_STR) + "_LAT_" + str(LATITUDE) \
+                + "_LON_" + str(LONGITUDE) + "_" + str(int(time.time() * 1e3))
+
+'''
+DATES = [(2023, 10, 8), (2020, 10, 8), (2000, 1, 1)]
+for ind, _date in enumerate(DATES):
+    DATES[ind] = datetime.date(_date[0], _date[1], _date[2])
+'''
+
+weather_df = pd.read_csv('Weather.csv')
+DATES = weather_df['disc_clean_date'].tolist()
+for ind, _date in enumerate(DATES):
+    DATES[ind] = datetime.datetime.strptime(_date, "%Y-%m-%d").date()
+  
 ###############################################################################
 # External Packages:
 '''
@@ -68,52 +97,129 @@ def calculate_degrees(file_id):
     return abi_lat, abi_lon
 
 ###############################################################################
-# Pull Data from GOES-R:
-# USER INPUTS:
-LATITUDE = 41.429780#40.343056
-LONGITUDE = -81.833320#-123.383056
-TOL_LAT = 0.01
-TOL_LON = 0.01
+# API Function: Get Dataset from GOES-R:
+def getDataset(voi_str, year, day, reading=0,  firstlast=-1):
+    # First: 0, Last/Most Recent: -1 (for reading of the day)
+    
+    # Year (YYYY), Day (DDD) of the year, Reading (RR)
+    _year = '{:0>4}'.format(year)
+    _day = '{:0>3}'.format(day)
+    _reading = '{:0>2}'.format(reading)
+    
+    query_str = f"ABI-L2-{voi_str}F/{_year}/{_day}/{_reading}/" # Get Full Disk projection
+    
+    ## Set up access to S3 bucket
+    s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
+    paginator = s3.get_paginator("list_objects_v2")
+    page_iterator = paginator.paginate(Bucket="noaa-goes16", Prefix=query_str)
+    
+    for page in page_iterator:
+        if not ("Contents" in page):
+            print("WARNING: Potentially empty entry. Could fix by selecting different date")
+            print("Inspect bin/url here: " + f"https://noaa-goes16.s3.amazonaws.com/index.html#{query_str}")
+        
+            return None
+        else:   # Data exists.
+            S3_HEADER = "s3://noaa-goes16/"
+            files_mapper = [S3_HEADER + f["Key"] for page in page_iterator for f in page["Contents"]]
+                # Note: KeyError: 'Contents' implies that the entry doesn't exist
+            
+            # open data file
+            # libraries needed: netcdf4, pydap
+            url = files_mapper[firstlast] +"#mode=bytes"
+            ds = xr.open_dataset(url)
+        
+            return ds
 
-# LST - Land Surface Temp (Skin), DMW (Derived Motion Winds) - no x, y only lat lon
-VOI_STR = "LST"
 
-## Set up access to S3 bucket
-s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
-paginator = s3.get_paginator("list_objects_v2")
-page_iterator = paginator.paginate(Bucket="noaa-goes16", Prefix=f"ABI-L2-{VOI_STR}F/2023/281/01/")
+# Get mean VOI for given Latitude, Longitude (assuming only given X, Y from GOES-R projection)
+def getMeanVOI(voi_str, ds, query_lat, query_lon,  lat_tol=0.01, lon_tol=0.01):
+    # See if we can pull the mapping of (x, y) -> (abi_lat, abi_lon)
+    try:
+        abi_lat, abi_lon = calculate_degrees(ds)
+        
+    except Exception as e:    
+        traceback.format_stack()
+        #print(repr(traceback.extract_stack()))
+        #print(repr(traceback.format_stack()))
+        
+        print("\n...Continuing without VOI: " + str(voi_str))
+        return None
+    
+    # Otherwise, we're good, pull our VOI:    
+    # Map desired (lat, lon) to found (x, y):
+    abi_x = np.where(np.abs(abi_lon - query_lon) < lon_tol) # Search matching Longitudes
+    abi_y = np.where(np.abs(abi_lat - query_lat) < lat_tol)  # Search matching Latitudes
 
-S3_HEADER = "s3://noaa-goes16/"
-files_mapper = [S3_HEADER + f["Key"] for page in page_iterator for f in page["Contents"]]
+    # Find intersections (X & Y that approximate query_lat/lon)
+    matching_x = np.intersect1d(abi_x[0], abi_y[0]) # X Coordinate matches
+    matching_y = np.intersect1d(abi_x[1], abi_y[1]) # Y Coordinate matches
+    
+    #matching_x = matching_x[:, np.newaxis]  # Expand to avoid broadcasting issues w/ np
+    matching_y = matching_y[:, np.newaxis]  # Expand to avoid broadcasting issues w/ np
 
-# open data file
-# libraries needed: netcdf4, pydap
-url = files_mapper[0] +"#mode=bytes"
-ds = xr.open_dataset(url)
+    # At this point, matching_x & y will be more-or-less continguous/monotonically 
+    #  increasing arrays. Any combination of matching_x & matching_y will give 
+    #  something in tolerance. 
+    
+    # For some reason we're not always gonna get a variable, so it's good to have a
+    #  few points that might get us what we want (otherwise have nan at that pt)
+    # So we leave matching_x, matching_y unchanged for our output.
 
-## Pull mapping of (x, y) -> (abi_lat, abi_lon)
-_abi_lat, _abi_lon = calculate_degrees(ds)
-abi_lat = np.ma.array(_abi_lat, mask=np.isnan(_abi_lat)) # Use a mask to mark the NaNs
-abi_lon = np.ma.array(_abi_lon, mask=np.isnan(_abi_lon)) # Use a mask to mark the NaNs
-# Map desired (lat, lon) to found (x, y):
-abi_x = np.where(np.abs(abi_lon - LONGITUDE) < TOL_LON) # Search matching Longitudes
-abi_y = np.where(np.abs(abi_lat - LATITUDE) < TOL_LAT)  # Search matching Latitudes
+    # Now, get the Variable of Interest
+    if voi_str in ds.variables:
+        _VOI_Array = ds.variables[voi_str].data[matching_x, matching_y] # Pull intersections
+        meanVOI = np.nanmean(_VOI_Array)                                    # Get mean for a representative value
+        return meanVOI
+    else:
+        print(f"ERROR: {voi_str} not present directly. Need different query string internally, implement later")
+        print(ds.variables)
+        return None
 
-# Find intersections
-matching_x = np.intersect1d(abi_x[0], abi_y[0]) # X Coordinate matches
-matching_y = np.intersect1d(abi_x[1], abi_y[1]) # Y Coordinate matches
+# Get day of year based on date
+def getDayOfYear(date_in):
+    # Get first day of the year with same year as `date_in`:
+    first_date = date_in.replace(month=1, day=1)
+    
+    # Calculate difference in days between input datetime and first day of year
+    delta = date_in - first_date
+    
+    # Add 1 to account for first day of year itself:
+    day = delta.days + 1
+    return day
 
-# At this point, matching_x & y will be more-or-less continguous/monotonically 
-#  increasing arrays. Any combination of matching_x & matching_y will give 
-#  something in tolerance. 
-# For some reason we're not always gonna get a variable, so it's good to have a
-#  few points that might get us what we want (otherwise have nan at that pt)
+###############################################################################
+# Sample of pulling data from GOES-R
+# For each date...
+outdata = pd.DataFrame(columns=['latitude', 'longitude', 'date'] + [str(i) for i in range(len(VOI_STR))])
 
-# Now, get the Variable of Interest
-_VOI_Array = ds.variables[VOI_STR].data[matching_x, matching_y] # Pull intersections
-VOI = np.nanmean(_VOI_Array)                                    # Get mean for a representative value
-VOI_F = (VOI - 273.15) * 9/5 + 32
-VOI_C = (VOI - 273.15)
-print(VOI, VOI_F, VOI_C)
-ds[VOI_STR].plot()
-
+# Pull data first:
+ds_dict = np.empty((len(DATES), len(VOI_STR)), dtype=object)
+for indDate, _date in enumerate(DATES):
+    for indVOI, _voi_str in enumerate(VOI_STR):
+        # For the user:
+        print(f"QUERYING: DATE: {_date}, VOI: {_voi_str}")
+        # Pull data:
+        day_of_year = getDayOfYear(_date)
+        ds_dict[indDate][indVOI] = getDataset(_voi_str, _date.year, day_of_year, 0)
+    
+# Read data:
+for indDate, _date in enumerate(DATES):
+    for _ind in range(len(LATITUDE)):
+        tmp_lat = LATITUDE[_ind]
+        tmp_lon = LONGITUDE[_ind]
+        
+        voi_arr = []
+        for indVOI, _voi_str in enumerate(VOI_STR):
+            _ds = ds_dict[indDate][indVOI]
+            _voi = getMeanVOI(_voi_str, _ds, tmp_lat, tmp_lon, LAT_TOL, LON_TOL)
+            voi_arr.append(_voi)
+            print(f"DATE: {_date}\t LAT: {LATITUDE[_ind]}\tLON: {LONGITUDE[_ind]}\tVOI: {_voi}")
+            
+        tmp_dict = {'latitude': tmp_lat, 'longitude': tmp_lon, 'date': _date}
+        tmp_dict.update({key: value for key, value in zip(VOI_STR, voi_arr)})
+        
+        outdata = pd.concat([outdata, pd.DataFrame([tmp_dict])], ignore_index=True)
+        
+# Output to CSV
+outdata.to_csv(f"./{CSV_NAME}.csv", index=False)
