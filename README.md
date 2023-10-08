@@ -1,5 +1,6 @@
 # Vulcan
 ## Space Apps 2023 
+[![Demo Thumbnail](https://img.youtube.com/vi/dfFkdbG7DV4/0.jpg)](https://youtu.be/dfFkdbG7DV4?feature=shared)
 
 The Verification Utility for Locating, Containing, And Notifying (VULCAN) Fire Response Operations system is designed to enhance fire prevention, monitoring, and response operations (especially rural regions) through the use of machine learning powered fire detection, response management, and alert systems.  
 
